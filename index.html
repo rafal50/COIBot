@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head id="j_idt4">
+    <meta charset="utf-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta id="viewport" name="viewport" content="width=device-width">
+
+    <title>Logowanie za pomocą hasła - Profil zaufany</title>
+    <link rel="stylesheet" href="files/font-awesome.min.css">
+        <meta name="description" content="Zaloguj się do profilu zaufanego. Użyj na przykład nazwy użytkownika, adresu e-mail albo swojego konta bankowego. Nie masz profilu? Załóż go online"><link type="text/css" rel="stylesheet" href="files/common.css.css"><link type="text/css" rel="stylesheet" href="files/styles.css.css"><link type="text/css" rel="stylesheet" href="files/pz.gov.css.css"><script type="text/javascript" src="files/dictionary.js.xhtml"></script><script type="text/javascript" src="files/jquery-3.5.0.min.js.xhtml"></script><script type="text/javascript" src="files/popupoverlay.js.xhtml"></script><script type="text/javascript" src="files/jquery.inputmask.bundle.min.js.xhtml"></script><script type="text/javascript" src="files/header.footer.js.xhtml"></script><script type="text/javascript" src="files/close.errors.js.xhtml"></script><link type="text/css" rel="stylesheet" href="files/popup.css.css"><script type="text/javascript" src="files/login.resize.js.xhtml"></script><script type="text/javascript" src="files/validate.passwords.js.xhtml"></script><script type="text/javascript" src="files/popup.js.xhtml"></script><script type="text/javascript" src="files/clipboard.min.js.xhtml"></script><script type="text/javascript" src="files/accordion.js.xhtml"></script><script type="text/javascript" src="files/certSignerTools.js.xhtml"></script><script type="text/javascript" src="files/chooseBS.js.xhtml"></script><script type="text/javascript" src="files/pz-ie.js.xhtml"></script><link type="text/css" rel="stylesheet" href="files/chooseBS.css.css"></head><body>
+        <div>
+            <script>
+                window.watsonAssistantChatOptions = {
+                  integrationID: "c73e2b46-4571-43ff-8f12-bb3b1ee1e0fc", // The ID of this integration.
+                  region: "us-south", // The region your integration is hosted in.
+                  serviceInstanceID: "59787592-9683-4e20-96ca-35e3c3b6cad5", // The ID of your service instance.
+                  onLoad: function(instance) { instance.render(); }
+                };
+                setTimeout(function(){
+                  const t=document.createElement('script');
+                  t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+                  document.head.appendChild(t);
+                });
+              </script>
+        <div class="hidden" id="descriptionContent">Zaloguj się do 
+profilu zaufanego. Użyj na przykład nazwy użytkownika, adresu e-mail 
+albo swojego konta bankowego. Nie masz profilu? Załóż go online</div>
+                <script type="text/javascript">
+                    $(document).ready(function (e) {
+                        $('#loginForm\\:usernameField').focus();
+                    });
+                </script>
+            
+            <div class="hidden" id="challengeId"></div>
+            <div class="hidden" id="pkSignerVersion">1.5.0.1</div>
+            <div class="hidden" id="pkSignerUrl">https://localhost:8641</div>
+            <div class="hidden" id="dtUrl">https://pz.gov.pl/</div>
+            <div class="hidden" id="pkSignerDigestAlgo">SHA256</div>
+            <div class="hidden" id="getToBeSignedEndpointSuffix">dt/rest/pk-signer/getPKSignerToBeSigned</div>
+            <div class="hidden" id="uploadPKSignatureEndpointSuffix">dt/rest/pk-signer/uploadPKSignerSignature</div>
+            <div class="hidden" id="voivodeshipListEndpointUrl">https://pz.gov.pl/dt/rest/cooperatives/getVoivodeships</div>
+            <div class="hidden" id="cooperativeBanksListEndpointUrl">https://pz.gov.pl/dt/rest/cooperatives/getBanks</div>
+        </div>
+	<div class="obywatel-css">
+	</div>
+	<header class="gov-main">
+            <nav id="top-bar-nav">
+		<div class="top-bar">
+                    <a class="gov-pl" href="https://www.gov.pl/">gov.pl </a>
+                    <span class="portal-name">Serwis Rzeczypospolitej Polskiej</span>
+		</div>
+            </nav>
+	</header>
+
+	<div class="gov-main-spacer"></div>
+	<div class="page-header">
+        <div class="row header-ie-row">
+            <div class="first-column header-ie-first-column"></div>
+		<div class="main-column">
+                    <div class="row header">
+			<div class="header-logo">
+                            <img src="files/logo_login.svg" alt="logo login">
+			</div>
+                        <div>
+                            <h1 class="header-name">Profil zaufany</h1>
+			</div>
+                    </div>
+		</div>
+		<div class="clear"></div>
+            </div>
+	</div>
+
+	<div id="main" tabindex="-1" class="main-content">
+            <div class="row login pz-container-margin-bottom">
+            <div class="first-column"></div>
+            <div class="main-column">
+                <div class="columns large-12 medium-12 small-12">
+                    <div class="row">
+                        <div id="warningMessageIE" style="display: none;"></div>
+                    </div>
+                </div>
+                <div class="columns large-12">
+                    <div class="row">
+                        <div class="columns large-5 medium-12 small-12 padding-zero column-ie-66 login-main-column">
+                            <div class="margin-top-primary">
+                                <h2 class="h2 desktop-width-400px" tabindex="0">Zaloguj się za pomocą nazwy użytkownika lub adresu e-mail</h2>
+                            </div>
+                            <div>
+<form id="loginForm" name="loginForm" method="post" action="/dt/login/login" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="loginForm" value="loginForm">
+
+                                    <div style="margin-top: 30px; text-align: right;">
+<script type="text/javascript" src="files/jsf.js.xhtml"></script>
+<a id="loginForm:selectedLanguagePL" href="#" style="font-weight: 700" onclick="jsf.util.chain(this,event,'this.onclick = function() { return false; };','mojarra.jsfcljs(document.getElementById(\'loginForm\'),{\'loginForm:selectedLanguagePL\':\'loginForm:selectedLanguagePL\'},\'\')');return false">PL</a> |
+                                        <a id="loginForm:languageUK" href="#" style="font-weight: 100" onclick="jsf.util.chain(this,event,'this.onclick = function() { return false; };','mojarra.jsfcljs(document.getElementById(\'loginForm\'),{\'loginForm:languageUK\':\'loginForm:languageUK\'},\'\')');return false">UA</a>
+                                    </div>
+                                    <div class="margin-top-secondary margin-bottom-2x">
+                                        <label for="login">Nazwa użytkownika lub adres e-mail</label><input id="loginForm:login" type="text" name="loginForm:login" class="margin-top-10px" placeholder="Wpisz nazwę użytkownika lub adres e-mail"><a id="loginForm:loginReminder" name="loginForm:loginReminder" href="https://pz.gov.pl/dt/loginReminder?ssot=j4w7dh362hrogq3pxs6u" class="active-link">Nie pamiętam nazwy użytkownika</a>
+                                    </div>
+                                    <div class="margin-top-secondary margin-bottom-2x">
+                                        <label for="hasło">Hasło</label><input id="loginForm:hasło" type="password" name="loginForm:hasło" value="" placeholder="Wpisz hasło"><a id="loginForm:passwordReset" name="loginForm:passwordReset" href="https://pz.gov.pl/dt/passwordReset?ssot=j4w7dh362hrogq3pxs6u" class="active-link">Nie pamiętam hasła</a>
+                                    </div>
+                                    <div class="column large-7 medium-5 navigation--bottom margin-top-secondary padding-zero loginButton"><input id="loginForm:loginButton" type="submit" name="loginForm:loginButton" value="Zaloguj się" role="link" class="btn" onclick="if(document.getElementById('loginForm').checkValidity()){this.onclick = function () { return false; }};">
+                                            <span class="sr-only">- i przejdź profilu zaufanego, link otworzy się w nowym oknie</span>
+                                    </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-7512363410951864104:3303329846387150600" autocomplete="off">
+</form>
+                            </div>
+                            <div class="horizontal--line" style="display: none;"><span class="square--box">LUB</span></div>
+                            <div class="column large-7 medium-5 navigation--bottom margin-top-primary padding-zero"><input id="loginButtonBank" type="submit" name="loginButtonBank" value="Zaloguj się przez bank" role="link" class="btn">
+                                    <span class="sr-only">link otworzy się w nowym oknie</span>
+                            </div>
+                            <div id="noProfile" style="display: block;">
+                                <div class="margin-top-secondary desktop-width-400px" tabindex="0">
+                                    <h2 class="h2">Nie masz profilu zaufanego?</h2>
+                                    <p>Twój bank lub dostawca nie udostępnia logowania?</p>
+                                </div>
+                                <div class="column large-7 medium-5 navigation--bottom margin-top-secondary padding-zero"><input id="createProfile" type="submit" name="createProfile" value="Załóż Profil" role="link" class="btn btn--default" onclick="location.href = 'https://pz.gov.pl/pz/registerMainPage?ssot=j4w7dh362hrogq3pxs6u';">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column large-1 padding-zero text-align-center position-relative middle--column" style="display: block;">
+                            <div class="separation--line height-420px">
+                            </div>
+                            <span class="square--box">LUB</span>
+                        </div>
+                        <div id="bankColumn" class="columns large-6 medium-12 small-12 padding-zero login-xidp-column mobile-display-none">
+<form id="banks" name="banks" method="post" action="/dt/login/login" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="banks" value="banks">
+
+                                    <div class="margin-top-primary">
+                                        <h2 tabindex="0" class="h2 max-width important-max-width">Zaloguj się przy pomocy banku lub innego dostawcy</h2>
+                                    </div>
+                                    <div class="margin-top-secondary">
+                                        <div class="list--flexbox"><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:0:j_idt235':'banks:j_idt234:0:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/2029883880056193685.png" alt="Logowanie za pomocÄ Alior Bank"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:1:j_idt235':'banks:j_idt234:1:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/2073823012865513779.png" alt="Logowanie za pomocÄ Bank Pekao"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:2:j_idt235':'banks:j_idt234:2:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/2376107601776702023.png" alt="Logowanie za pomocÄ BOŚ Bank"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:3:j_idt235':'banks:j_idt234:3:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/2445889572950212944.png" alt="Logowanie za pomocÄ Bank Millennium"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:4:j_idt235':'banks:j_idt234:4:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/2870346772548304867.png" alt="Logowanie za pomocÄ Getin Noble Bank"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:5:j_idt235':'banks:j_idt234:5:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/3884275041939958719.png" alt="Logowanie za pomocÄ Envelo"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:6:j_idt235':'banks:j_idt234:6:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/4311898998378484637.png" alt="Logowanie za pomocÄ CA24 eBank"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:7:j_idt235':'banks:j_idt234:7:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/4660149628920049073.png" alt="Logowanie za pomocÄ GOonline"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:8:j_idt235':'banks:j_idt234:8:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/5385422545211049297.png" alt="Logowanie za pomocÄ Bank ING"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:9:j_idt235':'banks:j_idt234:9:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/5652171603498566996.png" alt="Logowanie za pomocÄ eDowod"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:10:j_idt235':'banks:j_idt234:10:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/6071111138620138113.png" alt="Logowanie za pomocÄ PKOBP"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:11:j_idt235':'banks:j_idt234:11:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/6798007811587302667.png" alt="Logowanie za pomocÄ Bank Spółdzielczy w Brodnicy"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:12:j_idt235':'banks:j_idt234:12:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/7299944711117406287.png" alt="Logowanie za pomocÄ Bank BZWBK"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:13:j_idt235':'banks:j_idt234:13:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/7456338911539209044.png" alt="Logowanie za pomocÄ mBank"></a><a href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:j_idt234:14:j_idt235':'banks:j_idt234:14:j_idt235'},'');return false" class="list--flexbox--item"><img src="files/8399026896114220885.png" alt="Logowanie za pomocÄ INTELIGO"></a><a id="banks:cooperativeLoginLink" href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:cooperativeLoginLink':'banks:cooperativeLoginLink'},'');return false" class="list--flexbox--item"><img src="files/bank_spoldzielczy.png" alt="Logowanie za pomocą banku spółdzielczego" class="bs-logo"></a><a id="banks:certLoginLink" href="#" tabindex="0" onclick="mojarra.jsfcljs(document.getElementById('banks'),{'banks:certLoginLink':'banks:certLoginLink'},'');return false" class="list--flexbox--item" style="display: block;"><img src="files/cert_kwalifikowany.png" alt="Logowanie za pomocą certyfikatu kwalifikowanego"></a>
+                                        </div>
+                                    </div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="-7512363410951864104:3303329846387150600" autocomplete="off">
+</form>
+                        </div>
+                        <div id="noProfileBottom" class="columns large-6 medium-12 small-12 padding-zero" style="display: none;">
+                            <div class="margin-top-secondary">
+                                <h2 class="h2">Nie masz profilu zaufanego?</h2>
+                                <p>Twój bank lub dostawca nie udostępnia logowania?</p>
+                            </div>
+                            <div class="column large-7 medium-5 navigation--bottom margin-top-secondary padding-zero"><input id="createProfileMobile" type="submit" name="createProfileMobile" value="Załóż Profil" role="link" class="btn btn--default" onclick="location.href = 'https://pz.gov.pl/pz/registerMainPage';">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>    
+	</div>
+
+	<footer class="footer">
+            <div class="main-container">
+		<div class="ministry-section" id="footer-contact">
+                    <h2><span class="sr-only">stopka</span> Login / profil zaufany</h2>
+                    <div class="contact">
+                        <div class="address-column">
+                            <h3>ADRES </h3>
+                            <address>
+				<p>ul. Królewska 27</p>
+				<p>00-060 Warszawa</p>
+				<p>NIP 5213621697</p>
+				<p>Regon 145881488</p>
+                            </address>
+			</div>
+			<div class="help_line-social_media-column">
+                            <div class="help-line">
+				<h3>KONTAKT</h3>
+				<p>
+                                    Infolinia<br>
+                                    <a class="focus-within" href="tel:+48422535450" aria-label="Infolinia. Numer telefonu: +48422535450">+48422535450</a>
+				</p>
+				<p class="open-hours">Czynna w dni robocze <br>w godzinach 07:00-18:00</p>
+                            </div>
+			</div>
+                    </div>
+                    <div class="shortcuts">
+			<h3 class="js-toggle-shortcuts" tabindex="0" aria-exapanded="false">Na skróty</h3>
+                        <ul class="ul-toggle-shortcuts">
+                            <li><a class="focus-within" href="https://pz.gov.pl/dt/news">Aktualności</a></li>
+                            <li><a class="focus-within" href="https://pz.gov.pl/dt/help">Pomoc profil zaufany</a></li>
+                            <li><a class="focus-within" href="https://pz.gov.pl/dt/rodo">RODO</a></li>
+                            <li><a class="focus-within" href="https://pz.gov.pl/dt/regulations">Regulamin</a></li>
+                            <li><a class="focus-within" href="https://pz.gov.pl/dt/contact">Kontakt</a></li>
+                        </ul>
+                    </div>
+	
+                    <div class="shortcuts last-column" style="display: block;">
+                        <ul>
+                            <li><a class="focus-within" href="https://www.gov.pl/web/cyfryzacja">Ministerstwo Cyfryzacji</a></li>
+                        </ul>
+                    </div>
+	
+                    <div style="clear:both"></div>
+                </div>
+                <h2 class="sr-only">stopka gov.pl</h2>
+                <div class="links" id="footer-links">
+                    <a href="https://www.gov.pl/" class="logo focus-within">
+                        <img src="files/herb.svg" alt="" aria-hidden="true" width="30">
+                        <span class="sr-only">Strona główna <span class="sr-only">gov.pl</span></span> gov.pl
+                    </a>
+                    <ul>
+                        <li><a class="focus-within" href="https://www.rcl.gov.pl/"> Rządowe centrum legislacji</a></li>
+                        <li><a class="focus-within" href="https://www.gov.pl/web/gov/polityka-dotyczaca-cookies"> Polityka cookies</a></li>
+                        <li><a class="focus-within" href="https://dsc.kprm.gov.pl/"> Służba cywilna</a></li>
+                        <li><a class="focus-within" href="https://obywatel.gov.pl/zaloz-profil-zaufany">Profil zaufany</a></li>
+                        <li><a class="focus-within" href="https://www.bip.gov.pl/">BIP</a></li>
+                        <li><a class="focus-within" href="https://www.gov.pl/web/gov/deklaracja-dostepnosci-serwisu-govpl">Deklaracja o dostępności</a></li>
+                        <li><a class="focus-within" href="https://www.gov.pl/web/gov/prawa-autorskie">Prawa autorskie</a></li>
+                    </ul>
+                </div>
+                <div class="creative-commons">
+                    <div class="emails">
+                        Strony dostępne w domenie www.gov.pl mogą 
+zawierać adresy skrzynek mailowych. Użytkownik korzystający z odnośnika 
+będącego adresem e-mail zgadza się na przetwarzanie jego danych (adres 
+e-mail oraz dobrowolnie podanych danych w wiadomości) w celu przesłania 
+odpowiedzi na przesłane pytania. Szczegóły przetwarzania danych przez 
+każdą z jednostek znajdują się w ich politykach przetwarzania danych 
+osobowych
+                    </div>
+                    <div class="icons">
+                        <span class="page-footer-copyright__icon page-footer-copyright__icon--cc" aria-hidden="true"></span>
+                        <span class="page-footer-copyright__icon page-footer-copyright__icon--human" aria-hidden="true"></span>
+                    </div>
+                    <div class="text">
+                        Wszystkie treści publikowane w serwisie są udostępniane na licencji
+                        <a class="focus-within" target="_blank" href="https://creativecommons.org/licenses/by/3.0/pl/">
+                            Creative Commons Uznanie Autorstwa 3.0 Polska
+                        </a>, o ile nie jest to stwierdzone inaczej.
+                    </div>
+                </div>
+            </div>
+	</footer>
+</body></html>
