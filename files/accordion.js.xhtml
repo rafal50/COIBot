@@ -1,0 +1,63 @@
+$(document).ready(function () {
+    $('.simple-accordion a.expand').on('click', function (e) {
+        e.preventDefault();
+        $(this).toggleClass('expanded');
+        $(this).siblings('.info').toggleClass('expanded');
+        $(this).find('i.fa').toggleClass('fa-chevron-down fa-chevron-up');
+        var ariaExpanded = $(this).attr("aria-expanded") == "false" ? "true" : "false";
+        $(this).attr("aria-expanded", ariaExpanded);
+    });
+    $('.simple-accordion-toggler a').click(function (e) {
+        e.preventDefault();
+        $('.simple-accordion a.expand:not(.expanded)').click();
+    });
+    $(document).on('click', '.js-scenario-content .data-table td:first-child', function (e) {
+        e.preventDefault();
+        $(this).toggleClass('expanded');
+    });
+
+
+    $.fn.resizeselect = function () {
+        var arrowWidth = 20;
+        return this.each(function () {
+
+            $(this).change(function () {
+                var $this = $(this);
+
+                var text = $this.find("option:selected").text();
+
+                var $test = $("<span>").html(text).css({
+                    "font-size": $this.css("font-size"),
+                    "visibility": "hidden"
+                });
+
+                $test.appendTo($this.parent());
+                var width = $test.width();
+
+                $test.remove();
+                $this.width(width + arrowWidth);
+
+            }).change();
+
+        });
+    };
+
+    function initializeFooterTogglers() {
+        $('footer .js-toggle-shortcuts').click(footerLinkToggle);
+        $('footer .js-toggle-shortcuts').keypress(footerLinkToggle);
+    }
+
+    function footerLinkToggle(event) {
+        var $element = $(event.currentTarget);
+        var ariaExpanded = !$element.attr("aria-expanded");
+        $element.attr("aria-expanded", ariaExpanded);
+        $element.parent().toggleClass('expanded');
+    }
+
+    function resizeSelectWidth() {
+        $("select").resizeselect();
+    }
+
+    initializeFooterTogglers();
+    resizeSelectWidth();
+});
