@@ -15,7 +15,18 @@
     			integrationID: "34f4f625-5488-4152-86cf-c2faa3b24b03", // The ID of this integration.
     			region: "us-south", // The region your integration is hosted in.
     			serviceInstanceID: "59787592-9683-4e20-96ca-35e3c3b6cad5", // The ID of your service instance.
-   			onLoad: function(instance) { instance.render(); }
+             
+                
+   			onLoad: function(instance) { 
+                webChatInstance = instance;
+                // https://github.com/watson-developer-cloud/assistant-web-chat/blob/main/languages/en.json
+                const customLanguagePack = {
+                "input_placeholder": "Napisz wiadomość...",
+                "launcher_closeButton": "",
+                 };
+                instance.updateLanguagePack(customLanguagePack);
+        
+                instance.render(); }
   			};
 		  setTimeout(function(){
 		    const t=document.createElement('script');
