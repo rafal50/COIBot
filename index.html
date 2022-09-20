@@ -6,23 +6,36 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta id="viewport" name="viewport" content="width=device-width">
 
-    <title>Logowanie za pomocą hasła - Profil zaufany</title>
+    <title>TEST 1 - Logowanie za pomocą hasła - Profil zaufany</title>
     <link rel="stylesheet" href="files/font-awesome.min.css">
         <meta name="description" content="Zaloguj się do profilu zaufanego. Użyj na przykład nazwy użytkownika, adresu e-mail albo swojego konta bankowego. Nie masz profilu? Załóż go online"><link type="text/css" rel="stylesheet" href="files/common.css.css"><link type="text/css" rel="stylesheet" href="files/styles.css.css"><link type="text/css" rel="stylesheet" href="files/pz.gov.css.css"><script type="text/javascript" src="files/dictionary.js.xhtml"></script><script type="text/javascript" src="files/jquery-3.5.0.min.js.xhtml"></script><script type="text/javascript" src="files/popupoverlay.js.xhtml"></script><script type="text/javascript" src="files/jquery.inputmask.bundle.min.js.xhtml"></script><script type="text/javascript" src="files/header.footer.js.xhtml"></script><script type="text/javascript" src="files/close.errors.js.xhtml"></script><link type="text/css" rel="stylesheet" href="files/popup.css.css"><script type="text/javascript" src="files/login.resize.js.xhtml"></script><script type="text/javascript" src="files/validate.passwords.js.xhtml"></script><script type="text/javascript" src="files/popup.js.xhtml"></script><script type="text/javascript" src="files/clipboard.min.js.xhtml"></script><script type="text/javascript" src="files/accordion.js.xhtml"></script><script type="text/javascript" src="files/certSignerTools.js.xhtml"></script><script type="text/javascript" src="files/chooseBS.js.xhtml"></script><script type="text/javascript" src="files/pz-ie.js.xhtml"></script><link type="text/css" rel="stylesheet" href="files/chooseBS.css.css"></head><body>
         <div>
-            <script>
-                window.watsonAssistantChatOptions = {
-                  integrationID: "c73e2b46-4571-43ff-8f12-bb3b1ee1e0fc", // The ID of this integration.
-                  region: "us-south", // The region your integration is hosted in.
-                  serviceInstanceID: "59787592-9683-4e20-96ca-35e3c3b6cad5", // The ID of your service instance.
-                  onLoad: function(instance) { instance.render(); }
-                };
-                setTimeout(function(){
-                  const t=document.createElement('script');
-                  t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
-                  document.head.appendChild(t);
-                });
-              </script>
+		<script>
+  		window.watsonAssistantChatOptions = {
+    			integrationID: "34f4f625-5488-4152-86cf-c2faa3b24b03", // The ID of this integration.
+    			region: "us-south", // The region your integration is hosted in.
+    			serviceInstanceID: "59787592-9683-4e20-96ca-35e3c3b6cad5", // The ID of your service instance.
+            
+   			onLoad: function(instance) { 
+                webChatInstance = instance;
+                // https://github.com/watson-developer-cloud/assistant-web-chat/blob/main/languages/en.json
+                const customLanguagePack = {
+                "input_placeholder": "Napisz wiadomość...",
+                "launcher_closeButton": "",
+                "sessionHistory_expired": "Sesja jest nieaktywna. Wyślij wiadomość aby kontynuować. Odswieżenie strony wystartuje nową konwersację.",
+                "branding_headline": "<b>IBM Watson®</b>"
+                 };
+                instance.updateLanguagePack(customLanguagePack);
+        
+                instance.render(); }
+  			};
+		  setTimeout(function(){
+		    const t=document.createElement('script');
+		    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+		    document.head.appendChild(t);
+		  });
+		</script>
+		
         <div class="hidden" id="descriptionContent">Zaloguj się do 
 profilu zaufanego. Użyj na przykład nazwy użytkownika, adresu e-mail 
 albo swojego konta bankowego. Nie masz profilu? Załóż go online</div>
