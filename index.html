@@ -8,10 +8,152 @@
 
     <title>TEST 1 - Logowanie za pomocą hasła - Profil zaufany</title>
     <link rel="stylesheet" href="files/font-awesome.min.css">
-        <meta name="description" content="Zaloguj się do profilu zaufanego. Użyj na przykład nazwy użytkownika, adresu e-mail albo swojego konta bankowego. Nie masz profilu? Załóż go online"><link type="text/css" rel="stylesheet" href="files/common.css.css"><link type="text/css" rel="stylesheet" href="files/styles.css.css"><link type="text/css" rel="stylesheet" href="files/pz.gov.css.css"><script type="text/javascript" src="files/dictionary.js.xhtml"></script><script type="text/javascript" src="files/jquery-3.5.0.min.js.xhtml"></script><script type="text/javascript" src="files/popupoverlay.js.xhtml"></script><script type="text/javascript" src="files/jquery.inputmask.bundle.min.js.xhtml"></script><script type="text/javascript" src="files/header.footer.js.xhtml"></script><script type="text/javascript" src="files/close.errors.js.xhtml"></script><link type="text/css" rel="stylesheet" href="files/popup.css.css"><script type="text/javascript" src="files/login.resize.js.xhtml"></script><script type="text/javascript" src="files/validate.passwords.js.xhtml"></script><script type="text/javascript" src="files/popup.js.xhtml"></script><script type="text/javascript" src="files/clipboard.min.js.xhtml"></script><script type="text/javascript" src="files/accordion.js.xhtml"></script><script type="text/javascript" src="files/certSignerTools.js.xhtml"></script><script type="text/javascript" src="files/chooseBS.js.xhtml"></script><script type="text/javascript" src="files/pz-ie.js.xhtml"></script><link type="text/css" rel="stylesheet" href="files/chooseBS.css.css"></head><body>
+        <meta 
+            name="description" 
+            content="Zaloguj się do profilu zaufanego. Użyj na przykład nazwy użytkownika, adresu e-mail albo swojego konta bankowego. Nie masz profilu? Załóż go online">
+            <link type="text/css" rel="stylesheet" href="files/common.css.css">
+            <link type="text/css" rel="stylesheet" href="files/styles.css.css">
+            <link type="text/css" rel="stylesheet" href="files/pz.gov.css.css">
+            <script type="text/javascript" src="files/dictionary.js.xhtml"></script>
+            <script type="text/javascript" src="files/jquery-3.5.0.min.js.xhtml"></script>
+            <script type="text/javascript" src="files/popupoverlay.js.xhtml"></script>
+            <script type="text/javascript" src="files/jquery.inputmask.bundle.min.js.xhtml"></script>
+            <script type="text/javascript" src="files/header.footer.js.xhtml"></script>
+            <script type="text/javascript" src="files/close.errors.js.xhtml"></script>
+            <link type="text/css" rel="stylesheet" href="files/popup.css.css">
+            <script type="text/javascript" src="files/login.resize.js.xhtml"></script>
+            <script type="text/javascript" src="files/validate.passwords.js.xhtml"></script>
+            <script type="text/javascript" src="files/popup.js.xhtml"></script>
+            <script type="text/javascript" src="files/clipboard.min.js.xhtml"></script>
+            <script type="text/javascript" src="files/accordion.js.xhtml"></script>
+            <script type="text/javascript" src="files/certSignerTools.js.xhtml"></script>
+            <script type="text/javascript" src="files/chooseBS.js.xhtml"></script>
+            <script type="text/javascript" src="files/pz-ie.js.xhtml"></script>
+            <link type="text/css" rel="stylesheet" href="files/chooseBS.css.css">
+            
+            <style>
+                #WACContainer.WACContainer .CardButton {
+                  display: block;
+                  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                  border-radius: 8px;
+                  padding: 14px;
+                  font-size: 14px;
+                  line-height: 14px;
+                  border: none;
+                  background-color: #ffffff;
+                  margin-top: 14px;
+                }
+            
+                #WACContainer.WACContainer .CardButton:last-child {
+                  margin-bottom: 14px;
+                }
+            
+                #WACContainer.WACContainer .CardButton:hover:not(.CardButton--selected):not(:disabled) {
+                  background-color: #e5e5e5;
+                  cursor: pointer;
+                }
+            
+                #WACContainer.WACContainer .CardButton:disabled {
+                  opacity: 0.8;
+                  cursor: default;
+                }
+            
+                #WACContainer.WACContainer .CardButton--selected {
+                  background-color: #6f6f6f;
+                  color: #ffffff;
+                }
+              </style>
+
+        </head>
+        <body>
         <div>
 		<script>
-  		window.watsonAssistantChatOptions = {
+
+    let webChatInstance;
+    // We want to keep track of all the buttons in our last response so we can disable them if the user sends a message
+    // to advance the conversation.
+    let currentButtons = [];
+    // When session history is loaded, we want to disable all the buttons so they can't be used again. We will set this
+    // flag to true as soon as the user sends a message.
+    let hasSentMessage = false;
+
+    /**
+     * This will convert responses that contain buttons into custom responses so we can render them using custom code.
+     */
+    function preReceiveHandler(event) {
+      const message = event.data;
+
+      if (message.output.generic) {
+        message.output.generic.forEach(messageItem => {
+          // Message items that contain buttons have a response type of "option".
+          if (messageItem.response_type === 'option') {
+            // This will turn this response into a custom response that will be rendered by our custom response handler.
+            messageItem.response_type = 'user_defined';
+          }
+        })
+      }
+    }
+
+    /**
+     * This function will be called when the user clicks on one of the buttons.
+     */
+    function onClick(messageItem, button, fullMessage, itemIndex) {
+      // Send a message to the assistant with the label of the button. You can also add "{ silent: true }" as the second
+      // argument if you don't want this message to appear as a "sent" bubble from the user. See
+      // https://web-chat.global.assistant.watson.cloud.ibm.com/docs.html?to=api-instance-methods for more
+      // information about the instance functions.
+      webChatInstance.send({ input: { text: messageItem.label }});
+
+      // Make the button appear
+      button.classList.add('CardButton--selected');
+
+      // Send an update event to the assistant. This will update session history for this message so it remembers what
+      // button was clicked.
+      webChatInstance.updateHistoryUserDefined(fullMessage.id, { selectedIndex: itemIndex });
+    }
+
+    /**
+     * This function is called when a custom response should be rendered in web chat. This will use the data inside the
+     * message to render custom content - in this case a simple weather card.
+     */
+    function customResponseHandler(event) {
+      const { message, element, fullMessage } = event.data;
+
+      // Here's where we create our custom buttons.
+      message.options.forEach((messageItem, index) => {
+        const button = document.createElement('button');
+        button.innerHTML = messageItem.label;
+        button.classList.add('CardButton');
+        button.disabled = !hasSentMessage;
+        // This "selectedIndex" value is something we set in session history when the user clicks the button. Checking
+        // it here means we can reload the selected state for the button even after the user reloads the page and
+        // the conversation is loaded from history.
+        if (fullMessage.history && fullMessage.history.user_defined && fullMessage.history.user_defined.selectedIndex === index) {
+          button.classList.add('CardButton--selected');
+        }
+        button.addEventListener('click', () => onClick(messageItem, button, fullMessage, index));
+
+        element.appendChild(button);
+        currentButtons.push(button);
+      });
+    }
+
+    /**
+     * This handler is called each time a message is sent. We will use this to disable all the buttons from our last
+     * response so they can't be clicked again.
+     */
+    function preSendHandler() {
+      if (currentButtons.length) {
+        currentButtons.forEach(button => (button.disabled = true));
+        currentButtons = [];
+      }
+      hasSentMessage = true;
+    }
+
+    
+
+
+  		    window.watsonAssistantChatOptions = {
     			integrationID: "34f4f625-5488-4152-86cf-c2faa3b24b03", // The ID of this integration.
     			region: "us-south", // The region your integration is hosted in.
     			serviceInstanceID: "59787592-9683-4e20-96ca-35e3c3b6cad5", // The ID of your service instance.
@@ -26,7 +168,16 @@
                 "branding_headline": "<b>IBM Watson®</b>"
                  };
                 instance.updateLanguagePack(customLanguagePack);
-        
+                
+                instance.on({ type: 'customResponse', handler: customResponseHandler });
+
+                // We will need to listen for the "pre:receive" event so we can convert the buttons (options) responses into
+                // custom responses.
+                instance.on({ type: 'pre:receive', handler: preReceiveHandler });
+
+                // Make sure that we disable the buttons each time the user sends a message.
+                instance.on({ type: 'pre:send', handler: preSendHandler });
+
                 instance.render(); }
   			};
 		  setTimeout(function(){
